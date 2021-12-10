@@ -1,4 +1,4 @@
-package entità;
+package dto;
 
 public class Correntista {
 

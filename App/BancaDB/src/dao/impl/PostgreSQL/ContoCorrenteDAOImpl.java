@@ -8,7 +8,7 @@ import java.util.List;
 
 import controller.Controller;
 import dao.interfaccia.ContoCorrenteDAO;
-import entità.ContoCorrente;
+import dto.ContoCorrente;
 
 public class ContoCorrenteDAOImpl implements ContoCorrenteDAO{
 	

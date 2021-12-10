@@ -2,7 +2,7 @@ package dao.interfaccia;
 
 import java.util.List;
 
-import entità.ContoCorrente;
+import dto.ContoCorrente;
 
 public interface ContoCorrenteDAO {
 	
