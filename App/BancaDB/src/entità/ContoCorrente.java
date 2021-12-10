@@ -1,16 +1,17 @@
-	
 package entità;
+
+import java.util.List;
 
 public class ContoCorrente {
 
 	private String IBAN;
 	private int saldo;
-	private String CFConrrentista;
+	private String CFCorrentista;
 	
 	public ContoCorrente(String IBAN, int saldo, String CFCorrentista) {
 		this.IBAN = IBAN;
 		this.saldo = saldo;
-		this.CFConrrentista = CFCorrentista;
+		this.CFCorrentista = CFCorrentista;
 	}
 
 	public String getIBAN() {
@@ -28,12 +29,10 @@ public class ContoCorrente {
 	public void setSaldo(int saldo) {
 		this.saldo = saldo;
 	}
-
-	public String getCFConrrentista() {
-		return CFConrrentista;
-	}
-
-	public void setCFConrrentista(String cFConrrentista) {
-		CFConrrentista = cFConrrentista;
+	
+	public String stampaDettagliConto() {
+		String s = "IBAN: " + IBAN + "Saldo: " + saldo + "CFProprietario: " + CFCorrentista; 
+		
+		return s;  
 	}
 }
