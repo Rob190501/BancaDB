@@ -27,22 +27,17 @@ public class CorrentistaDAOImpl implements CorrentistaDAO{
 				   	   "FROM Correntista " +
 				   	   "WHERE CF = ?";
 	
-	
-	
 		PreparedStatement st = connection.prepareStatement(query);
 		
 		st.setString(1, CF);
 		
 		ResultSet rs = st.executeQuery();
 		
-	//	while(rs.next()) {
-	//		System.out.printf("%s - %d - %s\n", rs.getString("IBAN"), rs.getInt("saldo"), rs.getString("CFCorrentista"));
-	//	}
-		
-		
-		rs.next();
-		
-		return new Correntista(rs.getString("CF"), rs.getString("nome"), rs.getString("cognome"));
+		if(rs.next()) {
+			return new Correntista(rs.getString("CF"), rs.getString("nome"), rs.getString("cognome"));
+		}
+			
+		return null;
 	}
 
 	@Override
@@ -69,6 +64,20 @@ public class CorrentistaDAOImpl implements CorrentistaDAO{
 		return false;
 	}
 	
+	public boolean verificaCredenziali(String CF) throws Exception{
+		
+		String query = "SELECT * " +
+			   	   "FROM Correntista " +
+			   	   "WHERE CF = ?";
+
+		PreparedStatement st = connection.prepareStatement(query);
 	
+		st.setString(1, CF);
+	
+		ResultSet rs = st.executeQuery();
+		
+		
+		return false;
+	}
 
 }

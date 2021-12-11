@@ -27,22 +27,30 @@ public class ContoCorrenteDAOImpl implements ContoCorrenteDAO{
 					   "FROM ContoCorrente " +
 					   "WHERE IBAN = ?";
 		
-		
-		
 		PreparedStatement st = connection.prepareStatement(query);
 		
 		st.setString(1, IBAN);
 		
 		ResultSet rs = st.executeQuery();
 		
-//		while(rs.next()) {
-//			System.out.printf("%s - %d - %s\n", rs.getString("IBAN"), rs.getInt("saldo"), rs.getString("CFCorrentista"));
-//		}
-		
-		
 		rs.next();
 		
 		return new ContoCorrente(rs.getString("IBAN"), rs.getInt("saldo"));
+	}
+	
+	@Override
+	public ResultSet getContoCorrenteBYCFProprietario(String CFProprietario) throws Exception {
+		String query = "SELECT IBAN, saldo " +
+				   	   "FROM ContoCorrente " +
+				   	   "WHERE CFCorrentista = ?";
+	
+		PreparedStatement st = connection.prepareStatement(query);
+		
+		st.setString(1, CFProprietario);
+		
+		ResultSet rs = st.executeQuery();
+		
+		return rs;
 	}
 
 	@Override

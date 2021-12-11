@@ -1,5 +1,6 @@
 package dao.interfaccia;
 
+import java.sql.ResultSet;
 import java.util.List;
 
 import dto.ContoCorrente;
@@ -7,6 +8,8 @@ import dto.ContoCorrente;
 public interface ContoCorrenteDAO {
 	
 	ContoCorrente getContoCorenteBYIBAN(String IBAN) throws Exception;
+	
+	ResultSet getContoCorrenteBYCFProprietario(String CFProprietario) throws Exception;
 	
 	List<ContoCorrente> getAllContoCorrente() throws Exception;
 	
