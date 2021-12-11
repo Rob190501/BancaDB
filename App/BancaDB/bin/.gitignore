@@ -1,5 +1,4 @@
 /dao/
-/controller/
-/connessione/
-/entità/
 /dto/
+/controller/
+/gui/

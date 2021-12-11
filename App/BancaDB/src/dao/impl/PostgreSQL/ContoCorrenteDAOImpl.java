@@ -42,7 +42,7 @@ public class ContoCorrenteDAOImpl implements ContoCorrenteDAO{
 		
 		rs.next();
 		
-		return new ContoCorrente(rs.getString("IBAN"), rs.getInt("saldo"), rs.getString("CFCorrentista"));
+		return new ContoCorrente(rs.getString("IBAN"), rs.getInt("saldo"));
 	}
 
 	@Override
@@ -68,7 +68,4 @@ public class ContoCorrenteDAOImpl implements ContoCorrenteDAO{
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
-	
-
 }

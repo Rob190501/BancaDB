@@ -8,10 +8,9 @@ public class ContoCorrente {
 	private int saldo;
 	private String CFCorrentista;
 	
-	public ContoCorrente(String IBAN, int saldo, String CFCorrentista) {
-		this.IBAN = IBAN;
-		this.saldo = saldo;
-		this.CFCorrentista = CFCorrentista;
+	public ContoCorrente(String IBAN, int saldo) {
+		this.setIBAN(IBAN);
+		this.setSaldo(saldo);
 	}
 
 	public String getIBAN() {
@@ -31,7 +30,7 @@ public class ContoCorrente {
 	}
 	
 	public String stampaDettagliConto() {
-		String s = "IBAN: " + IBAN + "Saldo: " + saldo + "CFProprietario: " + CFCorrentista; 
+		String s = "IBAN: " + IBAN + " | Saldo: " + saldo; 
 		
 		return s;  
 	}
