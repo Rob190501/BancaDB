@@ -6,6 +6,7 @@ import dao.impl.PostgreSQL.ContoCorrenteDAOImpl;
 import dao.impl.PostgreSQL.CorrentistaDAOImpl;
 import dao.interfaccia.ContoCorrenteDAO;
 import dao.interfaccia.CorrentistaDAO;
+import eccezioni.ConnessioneDBFallitaException;
 import gui.LoginFrame;
 
 
@@ -44,7 +45,12 @@ public class Controller {
 		Controller c = null;
 		
 		try {
-			c = new Controller();
+			try {
+				c = new Controller();
+			}
+			catch(ConnessioneDBFallitaException e) {
+				
+			}
 			
 			String IBAN = "ITG1212UW";
 			

@@ -7,9 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import controller.Controller;
+import eccezioni.SystemLookAndFeelException;
+
 import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.JSeparator;
 import javax.swing.BoxLayout;
 import javax.swing.JTabbedPane;
@@ -22,17 +28,27 @@ import java.awt.event.ActionEvent;
 
 public class LoginFrame extends JFrame {
 
+	private Controller controller;
+	
 	private JPanel contentPane;
 	private JTextField txtCodiceFiscale;
 	private JButton btnNewButton;
 
 	public LoginFrame() {
 		initComponents();
+		
 		eventHandler();
 	}
 	
 	public void initComponents() {
-		setIconImage(Toolkit.getDefaultToolkit().getImage(LoginFrame.class.getResource("/gui/risorse/database-png-icon-27.png")));
+		try {
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+		catch (SystemLookAndFeelException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		setTitle("Login");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -44,28 +60,32 @@ public class LoginFrame extends JFrame {
 		txtCodiceFiscale.setToolTipText("Codice Fiscale");
 		txtCodiceFiscale.setColumns(20);
 		
-		btnNewButton = new JButton("New button");
+		JPanel panel = new JPanel();
 		
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addContainerGap(68, Short.MAX_VALUE)
-					.addComponent(btnNewButton))
-				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(36)
 					.addComponent(txtCodiceFiscale, GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
 					.addGap(38))
-		);
-		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
+				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(txtCodiceFiscale, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED, 201, Short.MAX_VALUE)
-					.addComponent(btnNewButton)
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 428, Short.MAX_VALUE)
 					.addContainerGap())
 		);
+		gl_contentPane.setVerticalGroup(
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(txtCodiceFiscale, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(57))
+		);
+		
+		btnNewButton = new JButton("New button");
+		panel.add(btnNewButton);
 		contentPane.setLayout(gl_contentPane);
 	}	
 	
